@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Recipes from "./components/Recipes/Recipes";
+import "./App.css";
 
 const App = () => {
   const APP_ID = "a503256a";
@@ -32,13 +33,15 @@ const App = () => {
   };
 
   return (
-    <div className="App container">
-      <h1 className="main-title">Hello</h1>
+    <div className="App container" style={{ height: "100vh" }}>
+      <h1 className="main-title white-color">
+        give the ingredient and we'll find a recipe for you
+      </h1>
       <form className="serach-form" onSubmit={getSearch}>
         <input
           type="text"
           className="search-bar"
-          placeholder="Type ingredient"
+          placeholder="Type ingredient, for example 'strawberries'"
           value={search}
           onChange={updateSearch}
         />
@@ -46,16 +49,20 @@ const App = () => {
           Search
         </button>
       </form>
-      <div className="recepies">
-        {recipes.map((recipe) => (
-          <Recipes
-            key={recipe.recipe.label}
-            title={recipe.recipe.label}
-            calories={recipe.recipe.calories}
-            image={recipe.recipe.image}
-            ingredients={recipe.recipe.ingredients}
-          />
-        ))}
+      <div className="recipes">
+        <div class="row">
+          {recipes.map((recipe) => (
+            <div class="col s12 m6 l4">
+              <Recipes
+                key={recipe.recipe.label}
+                title={recipe.recipe.label}
+                calories={recipe.recipe.calories}
+                image={recipe.recipe.image}
+                ingredients={recipe.recipe.ingredients}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

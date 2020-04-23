@@ -1,17 +1,25 @@
 import React from "react";
+import "./Recipes.css";
 
 const Recipes = ({ title, calories, image, ingredients }) => {
   {
     return (
       <div>
-        <div className="card blue-grey darken-1">
-          <div className="card-content white-text center">
-            <img src={image} alt="Recipe Image" className="image" />
-            <span className="card-title">{title}</span>
-            <p>Calories: {calories}</p>
+        <div className="card white darken-1">
+          <div className="card-image">
+            <img
+              src={image}
+              alt="Recipe Image"
+              className="image"
+              style={{ width: "100%" }}
+            />
+          </div>
+          <div className="card-content center">
+            <h2 className="card-title">{title}</h2>
+            <p>Calories: {Math.round(calories)}</p>
             <ul style={{ listStyle: "none" }}>
               {ingredients.map((ingredient) => (
-                <li key={Math.random()}>{ingredient.text}</li>
+                <li key={Math.random()}>→ {ingredient.text}</li>
               ))}
             </ul>
           </div>
